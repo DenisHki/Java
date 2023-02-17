@@ -1,1 +1,2 @@
-
+A simple bank application, which allows to create customers and add transactions (debit/credit). 
+It can also print a statement, that includes the customer name and the transaction amount.
