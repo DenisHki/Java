@@ -55,10 +55,6 @@ public class StudentControllerServlet extends HttpServlet {
 				listStudents(request, response);
 				break;
 
-			case "ADD":
-				addStudent(request, response);
-				break;
-
 			case "LOAD":
 				loadStudent(request, response);
 				break;
@@ -66,7 +62,7 @@ public class StudentControllerServlet extends HttpServlet {
 			case "UPDATE":
 				updateStudent(request, response);
 				break;
-			
+
 			case "DELETE":
 				deleteStudent(request, response);
 				break;
@@ -81,39 +77,60 @@ public class StudentControllerServlet extends HttpServlet {
 
 	}
 
-	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) 
-			throws Exception {
-		
+	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		// read student id from form data:
 		String theStudentId = request.getParameter("studentId");
-		
+
 		// delete student from database:
 		studentDbUtil.deleteStudent(theStudentId);
-		
+
 		// send them back to "list students" page:
 		listStudents(request, response);
-		
-		
+
 	}
 
-	private void updateStudent(HttpServletRequest request, HttpServletResponse response) 
-			throws Exception {
-		
+	private void updateStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		// read student info from form data:
 		int id = Integer.parseInt(request.getParameter("studentId"));
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
-		
+
 		// create a new student object:
 		Student theStudent = new Student(id, firstName, lastName, email);
-		
+
 		// perform update on database:
 		studentDbUtil.updateStudent(theStudent);
-		
+
 		// send them back to the "list students" page:
 		listStudents(request, response);
-		
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+			// read the "command" parameter
+			String theCommand = request.getParameter("command");
+
+			// route to the appropriate method
+			switch (theCommand) {
+
+			case "ADD":
+				addStudent(request, response);
+				break;
+
+			default:
+				listStudents(request, response);
+			}
+
+		} catch (Exception exc) {
+			throw new ServletException(exc);
+		}
+
 	}
 
 	private void loadStudent(HttpServletRequest request, HttpServletResponse response)
@@ -149,7 +166,8 @@ public class StudentControllerServlet extends HttpServlet {
 		studentDbUtil.addStudent(theStudent);
 
 		// send back to main page (the student list)
-		listStudents(request, response);
+		// SEND AS REDIRECT to avoid multiple-browser reload issue
+		response.sendRedirect(request.getContextPath() + "/StudentControllerServlet?command=LIST");
 	}
 
 	private void listStudents(HttpServletRequest request, HttpServletResponse response) throws Exception {
