@@ -1,2 +1,3 @@
 # Java
-My java projects
+Java projects from university and other courses
+
