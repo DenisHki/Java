@@ -26,13 +26,13 @@ The Student Tracker Web Application efficiently manages student information usin
 ## Screenshots
 
 1. **Main Page**
-   ![Main Page](https://github.com/DenisHki/java/web_student_tracker/screenshots/home.png)
+   ![Main Page](https://github.com/DenisHki/java/blob/main/web_student_tracker/screenshots/home.png)
 
 2. **Add Student**
-   ![Add Student](https://github.com/DenisHki/java/web_student_tracker/screenshots/add_student.png)
+   ![Add Student](https://github.com/DenisHki/java/blob/main/web_student_tracker/screenshots/add_student.png)
 
 3. **Save Student**
-   ![Save Student](https://github.com/DenisHki/java/web_student_tracker/screenshots/save.png)
+   ![Save Student](https://github.com/DenisHki/java/blob/main/web_student_tracker/screenshots/save.png)
 
 ## Getting Started
 
