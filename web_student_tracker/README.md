@@ -41,7 +41,7 @@ To run the application locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://DenisHkiyour-username/web_student_tracker.git
+   git clone https://github.com/DenisHki/java/tree/main/web_student_tracker.git
    
 2. **Open the project in your favorite Java IDE.**
 
